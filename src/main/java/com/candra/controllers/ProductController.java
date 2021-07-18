@@ -3,7 +3,6 @@ package com.candra.controllers;
 import javax.validation.Valid;
 
 import com.candra.dto.ResponseData;
-import com.candra.dto.SupplierData;
 import com.candra.models.entities.Product;
 import com.candra.models.entities.Supplier;
 import com.candra.services.ProductService;
