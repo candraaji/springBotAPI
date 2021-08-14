@@ -19,10 +19,10 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "tbl_supplier")
-@JsonIdentityInfo(
-    generator = ObjectIdGenerators.PropertyGenerator.class,
-    property = "id"
-)
+// @JsonIdentityInfo(
+//     generator = ObjectIdGenerators.PropertyGenerator.class,
+//     property = "id"
+// )
 public class Supplier implements Serializable {
     
     @Id
@@ -41,7 +41,7 @@ public class Supplier implements Serializable {
 
     @ManyToMany(mappedBy =  "suppliers")
     //menghindari infinite loop reference
-    // @JsonBackReference
+    @JsonBackReference
     private Set<Product> products;
 
     public Long getId() {
