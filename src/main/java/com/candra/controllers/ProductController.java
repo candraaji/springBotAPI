@@ -1,8 +1,10 @@
 package com.candra.controllers;
+import java.util.List;
 
 import javax.validation.Valid;
 
 import com.candra.dto.ResponseData;
+import com.candra.dto.SearchData;
 import com.candra.models.entities.Product;
 import com.candra.models.entities.Supplier;
 import com.candra.services.ProductService;
@@ -97,6 +99,18 @@ public class ProductController {
     @PostMapping("/{id}")
     public void addSupplier(@RequestBody Supplier supplier, @PathVariable("id") Long productId){
         productService.addSupplier(supplier, productId);
+    }
+
+    @PostMapping("/search/name")
+    public Product getProductByName(@RequestBody SearchData searchData){
+        return productService.findByProductName(searchData.getSearchKey());
+
+    }
+
+    @PostMapping("/search/namelike")
+    public List<Product> getProductByNameLike(@RequestBody SearchData searchData){
+        return productService.findByProductNameLike(searchData.getSearchKey());
+
     }
 
 }
